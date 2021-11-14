@@ -45,7 +45,7 @@ class Debug(commands.Cog):
             value=str(type(emoji)),
         )
 
-        await ctx.send(embed)
+        await ctx.send(embed=embed)
 
 
 def setup(bot) -> None:
