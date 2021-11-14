@@ -44,6 +44,12 @@ class Debug(commands.Cog):
             name="Class",
             value=str(type(emoji)),
         )
+        
+        if type(emoji) == discord.PartialEmoji:
+            embed.add_field(
+                name="ID",
+                value=emoji.id,
+            )
 
         await ctx.send(embed=embed)
 
