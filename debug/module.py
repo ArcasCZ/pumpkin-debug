@@ -41,6 +41,11 @@ class Debug(commands.Cog):
         )
 
         embed.add_field(
+            name="Is discord.PartialEmoji",
+            value=(type(emoji) is discord.PartialEmoji),
+        )
+        
+        embed.add_field(
             name="Class",
             value=str(type(emoji)),
         )
