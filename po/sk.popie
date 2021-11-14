@@ -1,0 +1,158 @@
+msgid Points
+msgstr Body
+
+msgid **{user}'s** points
+msgstr Body užívateľa **{user}'s**
+
+msgid Points and ranking
+msgstr Body a hodnotenie
+
+msgid Points leaderboard
+msgstr Bodový rebríček
+
+msgid Score, descending
+msgstr Skóre, zostupne
+
+msgid Unknown
+msgstr Neznámy
+
+msgid Top {limit}
+msgstr Top limit je {limit}
+
+msgid Your score
+msgstr Tvoje skóre
+
+msgid User karma
+msgstr Karma užívateľa
+
+msgid Karma
+msgstr Karma
+
+msgid Karma given
+msgstr Rozdaná karma
+
+msgid Karma taken
+msgstr Odobraná karma
+
+msgid Emoji {emoji} not found.
+msgstr Emoji {emoji} sa nenašlo.
+
+msgid This emoji does not have karma value.
+msgstr Tento emoji nie je ohodnotený.
+
+msgid Emoji karma
+msgstr Hodnota emoji
+
+msgid Karma value
+msgstr Hodnota karmy
+
+msgid No emoji has karma value on this server.
+msgstr Tento emoji nemá na tomto serveri pridelenú hodnotu
+
+msgid Emojis with positive karma
+msgstr Kladne ohodnotené emoji
+
+msgid Emojis with neutral karma
+msgstr Neutrálne ohodnotené emoji
+
+msgid Emojis with negative karma
+msgstr Záporne ohodnotené emoji
+
+msgid All server emojis have been assigned a karma value.
+msgstr Všetkým emoji na tomto serveri je pridelená hodnota.
+
+msgid Karma vote over the value of {emoji} started.
+msgstr Začalo sa hlasovanie o hodnote {emoji}.
+
+msgid The vote will run for **{minutes}** minutes.
+msgstr Hlasovanie potrvá **{minutes}** minút.
+
+msgid Required minimum vote count is **{count}**.
+msgstr Potrebný počet hlasov je **{count}**.
+
+msgid Vote over {emoji} failed.
+msgstr Hlasovanie o hodnote {emoji} bolo neúspešné.
+
+msgid Karma value of {emoji} is **{value}**.
+msgstr Hodnota emoji {emoji} je **{value}**.
+
+msgid Emoji's karma value has been unset.
+msgstr Karma hodnota emoji bola resetovaná.
+
+msgid Usual values are only 1, 0 or -1.
+msgstr Používané hodnoty sú len 1, 0 alebo -1.
+
+msgid The value has been set.
+msgstr Hodnota bola pridelená.
+
+msgid Karma is disabled in message's channel.
+msgstr Karma je v tomto kanáli deaktivovaná.
+
+msgid Message karma
+msgstr Hodnota správy
+
+msgid Total karma value of [the message]({link}) is {value} karma points.
+msgstr Celková hodnota správy [the message]({link}) má {value} karmy.
+
+msgid **{user}** in #{channel}
+msgstr Užívateľ **{user}** v kanáli #{channel}
+
+msgid Message content
+msgstr Obsah správy
+
+msgid Positive reactions
+msgstr Pozitívne reakcie
+
+msgid Negative reactions
+msgstr Negatívne reakcie
+
+msgid Neutral reactions
+msgstr Neutrálne reakcie
+
+msgid {member} got {value} karma points.
+msgstr Užívateľ {member} dostal {value} karmy.
+
+msgid Every member got {value} karma points
+msgstr Každý člen dostal {value} karmy.
+
+msgid Karma leaderboard
+msgstr Karma rebríček
+
+msgid Karma data not yet available.
+msgstr Dáta ohľadom karmy nie sú k dispozícii.
+
+msgid Karma loserboard
+msgstr Rebríček najnižšej karmy
+
+msgid Score, ascending
+msgstr Skóre, vzostupne
+
+msgid Karma givingboard
+msgstr Rebríček rozdanej karmy
+
+msgid Karma takingboard
+msgstr Rebríček odobranej karmy
+
+msgid Karma is not ignored in any of the channels.
+msgstr Karma sa v žiadnom kanáli neignoruje.
+
+msgid Channel ID
+msgstr ID kanálu
+
+msgid Channel name
+msgstr Meno kanálu
+
+msgid Karma is already ignored in that channel.
+msgstr V tomto kanáli sa už karma ignoruje.
+
+msgid Karma will be ignored in {channel} from now on.
+msgstr Odteraz sa bude karma v kanáli {channel} ignorovať.
+
+msgid Karma is not ignored in that channel.
+msgstr V tomto kanáli sa karma neignoruje.
+
+msgid Karma will not be ignored in {channel} from now on.
+msgstr Odteraz sa karma v kanáli {channel} prestane ignorovať.
+
+msgid Worst {limit}
+msgstr Najhorší limit je {limit}
