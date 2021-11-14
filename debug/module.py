@@ -36,8 +36,8 @@ class Debug(commands.Cog):
         """Debug emoji"""
         embed = utils.Discord.create_embed(
             author=ctx.author,
-            title=_(ctx, "Debug - Emoji"),
-            description=_(ctx, "{emoji} debug").format(emoji=str(emoji)),
+            title="Debug - Emoji",
+            description="{emoji} debug".format(emoji=str(emoji)),
         )
 
         embed.add_field(
