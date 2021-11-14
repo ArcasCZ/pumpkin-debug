@@ -5,13 +5,8 @@ from typing import Union, Dict, List
 import discord
 from discord.ext import commands, tasks
 
-import database.config
-from core import utils, i18n, TranslationContext
+from core import utils
 
-from .database import UserStats, BoardOrder
-
-_ = i18n.Translator("modules/boards").translate
-config = database.config.Config.get()
 
 LIMITS_MESSAGE = [15, 25]
 LIMITS_REACTION = [0, 5]
