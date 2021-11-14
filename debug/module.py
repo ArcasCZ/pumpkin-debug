@@ -5,7 +5,7 @@ from typing import Union, Dict, List
 import discord
 from discord.ext import commands, tasks
 
-from core import utils
+from core import utils, check
 
 
 LIMITS_MESSAGE = [15, 25]
