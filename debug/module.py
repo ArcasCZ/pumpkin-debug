@@ -2,8 +2,8 @@ import datetime
 import random
 from typing import Optional, Union, Dict, List
 
-import discord
-from discord.ext import commands, tasks
+import nextcord
+from nextcord.ext import commands, tasks
 
 from core import utils, check
 
@@ -31,7 +31,7 @@ class Debug(commands.Cog):
     @commands.check(check.acl)
     @debug_.command(name="emoji")
     async def debug_emoji(
-        self, ctx, emoji: Optional[Union[discord.PartialEmoji, str]] = None
+        self, ctx, emoji: Optional[Union[nextcord.PartialEmoji, str]] = None
     ):
         """Debug emoji"""
         embed = utils.Discord.create_embed(
@@ -41,8 +41,8 @@ class Debug(commands.Cog):
         )
 
         embed.add_field(
-            name="Is discord.PartialEmoji",
-            value=(type(emoji) is discord.PartialEmoji),
+            name="Is nextcord.PartialEmoji",
+            value=(type(emoji) is nextcord.PartialEmoji),
         )
 
         embed.add_field(
@@ -50,7 +50,7 @@ class Debug(commands.Cog):
             value=str(type(emoji)),
         )
 
-        if type(emoji) == discord.PartialEmoji:
+        if type(emoji) == nextcord.PartialEmoji:
             embed.add_field(
                 name="ID",
                 value=emoji.id,
