@@ -61,7 +61,7 @@ class Debug(commands.Cog):
     @commands.check(check.acl)
     @debug_.command(name="str")
     async def debug_str(self, ctx):
-        text = ctx.message
+        text = ctx.message.content
         await ctx.send("```" + text + "```")
 
 
