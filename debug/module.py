@@ -5,7 +5,7 @@ from typing import Optional, Union, Dict, List
 import nextcord
 from nextcord.ext import commands, tasks
 
-from core import utils, check
+from pie import utils, check
 
 
 LIMITS_MESSAGE = [15, 25]
