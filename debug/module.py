@@ -60,8 +60,8 @@ class Debug(commands.Cog):
 
     @commands.check(check.acl)
     @debug_.command(name="str")
-    async def debug_str(self, ctx, *texts):
-        text = "\n".join(texts)
+    async def debug_str(self, ctx):
+        text = ctx.message
         await ctx.send("```" + text + "```")
 
 
