@@ -44,12 +44,12 @@ class Debug(commands.Cog):
             name="Is discord.PartialEmoji",
             value=(type(emoji) is discord.PartialEmoji),
         )
-        
+
         embed.add_field(
             name="Class",
             value=str(type(emoji)),
         )
-        
+
         if type(emoji) == discord.PartialEmoji:
             embed.add_field(
                 name="ID",
@@ -57,6 +57,11 @@ class Debug(commands.Cog):
             )
 
         await ctx.send(embed=embed)
+
+    @commands.check(check.acl)
+    @debug_.command(name="str")
+    async def debug_str(self, ctx, text: Optional[str] = None):
+        await ctx.send("```" + text + "```")
 
 
 def setup(bot) -> None:
