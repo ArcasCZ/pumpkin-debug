@@ -61,7 +61,7 @@ class Debug(commands.Cog):
     @commands.check(check.acl)
     @debug_.command(name="str")
     async def debug_str( self, ctx: commands.Context, datetime_str: str, *, text: Optional[str]):
-        await ctx.send("{datetime}\nText:\n```{text}```".format(datetime=datetime_str, text=text if not None else "Empty")
+        await ctx.send("{datetime}\nText:\n```{text}```".format(datetime=datetime_str, text=text if not None else "Empty"))
 
 
 def setup(bot) -> None:
