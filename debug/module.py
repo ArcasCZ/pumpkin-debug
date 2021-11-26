@@ -26,7 +26,7 @@ class Debug(commands.Cog):
     @commands.check(check.acl)
     async def debug_(self, ctx):
         """Debug tools"""
-        await utils.Discord.send_help(ctx)
+        await utils.discord.send_help(ctx)
 
     @commands.check(check.acl)
     @debug_.command(name="emoji")
@@ -34,7 +34,7 @@ class Debug(commands.Cog):
         self, ctx, emoji: Optional[Union[nextcord.PartialEmoji, str]] = None
     ):
         """Debug emoji"""
-        embed = utils.Discord.create_embed(
+        embed = utils.discord.create_embed(
             author=ctx.author,
             title="Debug - Emoji",
             description="{emoji} debug".format(emoji=str(emoji)),
