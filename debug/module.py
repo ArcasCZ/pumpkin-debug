@@ -118,6 +118,11 @@ class Debug(commands.Cog):
                 
             print(image)
         print("Done")
+        
+    @debug_.command(name="channels")
+    async def debug_channels(self, ctx):
+        channel_count = len(ctx.guild.channels)
+        await ctx.send(f"There are {channel_count} channels.")
 
 
 def setup(bot) -> None:   
