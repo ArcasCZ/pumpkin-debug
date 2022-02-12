@@ -9,7 +9,7 @@ from PIL import Image, ImageFile
 import nextcord
 from nextcord.ext import commands, tasks
 
-from pie import utils, check, storage
+from pie import utils, check
 from pie.database import session
 
 
