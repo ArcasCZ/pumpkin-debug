@@ -6,8 +6,8 @@ import urllib
 from typing import Optional, Union, Dict, List
 from PIL import Image, ImageFile
 
-import nextcord
-from nextcord.ext import commands, tasks
+import discord
+from discord.ext import commands, tasks
 
 from pie import utils, check
 from pie.database import session
@@ -29,7 +29,7 @@ class Debug(commands.Cog):
     @check.acl2(check.ACLevel.BOT_OWNER)
     @debug_.command(name="emoji")
     async def debug_emoji(
-        self, ctx, emoji: Optional[Union[nextcord.PartialEmoji, str]] = None
+        self, ctx, emoji: Optional[Union[discord.PartialEmoji, str]] = None
     ):
         """Debug emoji"""
         embed = utils.discord.create_embed(
@@ -39,8 +39,8 @@ class Debug(commands.Cog):
         )
 
         embed.add_field(
-            name="Is nextcord.PartialEmoji",
-            value=(type(emoji) is nextcord.PartialEmoji),
+            name="Is discord.PartialEmoji",
+            value=(type(emoji) is discord.PartialEmoji),
         )
 
         embed.add_field(
@@ -48,7 +48,7 @@ class Debug(commands.Cog):
             value=str(type(emoji)),
         )
 
-        if type(emoji) == nextcord.PartialEmoji:
+        if type(emoji) == discord.PartialEmoji:
             embed.add_field(
                 name="ID",
                 value=emoji.id,
@@ -59,7 +59,7 @@ class Debug(commands.Cog):
     @check.acl2(check.ACLevel.BOT_OWNER)
     @debug_.command(name="str")
     async def debug_str(
-        self, ctx: commands.Context, *members: Union[nextcord.Member, int]
+        self, ctx: commands.Context, *members: Union[discord.Member, int]
     ):
         for member in members:
             if isinstance(member, int):
@@ -72,7 +72,7 @@ class Debug(commands.Cog):
 
     @check.acl2(check.ACLevel.BOT_OWNER)
     @debug_.command(name="message")
-    async def debug_message(self, ctx: commands.Context, message: nextcord.Message):
+    async def debug_message(self, ctx: commands.Context, message: discord.Message):
         pass
 
     @check.acl2(check.ACLevel.BOT_OWNER)
@@ -82,5 +82,5 @@ class Debug(commands.Cog):
         await ctx.send(f"There are {channel_count} channels.")
 
 
-def setup(bot) -> None:
-    bot.add_cog(Debug(bot))
+async def setup(bot) -> None:
+    await bot.add_cog(Debug(bot))
