@@ -1,16 +1,13 @@
-import datetime
-import random
-import re
 import tempfile
-import urllib
-from typing import Optional, Union, Dict, List
-from PIL import Image, ImageFile
+from typing import Optional, Union
 
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 
 from pie import utils, check
 from pie.database import session
+
+from modules.school.review.database import SubjectReview, TeacherReview
 
 
 class Debug(commands.Cog):
@@ -80,6 +77,47 @@ class Debug(commands.Cog):
     async def debug_channels(self, ctx):
         channel_count = len(ctx.guild.channels)
         await ctx.send(f"There are {channel_count} channels.")
+
+    @check.acl2(check.ACLevel.BOT_OWNER)
+    @debug_.command(name="review")
+    async def debug_review(self, ctx):
+        reviews = []
+        subject_reviews = (
+            session.query(SubjectReview).filter_by(guild_id=ctx.guild.id).all()
+        )
+        for review in subject_reviews:
+            reviews.append(
+                "subject;{abbreviation};{name};{text}".format(
+                    abbreviation=review.subject.abbreviation,
+                    name=review.subject.name,
+                    text=review.text_review.replace("\n", "\t"),
+                )
+            )
+
+        teacher_reviews = (
+            session.query(TeacherReview).filter_by(guild_id=ctx.guild.id).all()
+        )
+        for review in teacher_reviews:
+            reviews.append(
+                "subject;{id};{name};{text}".format(
+                    id=review.teacher.school_id,
+                    name=review.teacher.name,
+                    text=review.text_review.replace("\n", "\t").replace(";", "."),
+                )
+            )
+
+        file = tempfile.TemporaryFile(mode="w+")
+
+        file.write("type;id;name;text" + "\n".join(reviews))
+
+        filename = "review_dump.csv"
+
+        file.seek(0)
+        await ctx.reply(
+            "Message exported to CSV.",
+            file=discord.File(fp=file, filename=filename),
+        )
+        file.close()
 
 
 async def setup(bot) -> None:
