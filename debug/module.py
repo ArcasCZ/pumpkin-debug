@@ -108,7 +108,7 @@ class Debug(commands.Cog):
 
         file = tempfile.TemporaryFile(mode="w+")
 
-        file.write("type;id;name;text" + "\n".join(reviews))
+        file.write("Type;ID;Name;Text\n" + "\n".join(reviews))
 
         filename = "review_dump.csv"
 
