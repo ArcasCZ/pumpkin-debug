@@ -8,6 +8,33 @@ from pie import utils, check
 class Vote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    # Helper functions
+    
+    @staticmethod
+    def emoji_decode(
+        bot: discord.Client,
+        emoji: str,
+    ) -> Optional[Union[str, discord.Emoji, discord.PartialEmoji]]:
+        """If emoji is ID, it tries to look it up in bot's emoji DB.
+        Otherwise it returns the emoji untouched as string.
+        Args:
+            bot: :class:`discord.Client` used to search for Emoji
+            emoji: UTF-8 emoji or emoji's ID
+        Returns:
+            UTF-8 emoji or Discord Emoji
+        """
+        if emoji is None:
+            return None
+
+        if not emoji.isdigit():
+            return emoji
+
+        found_emoji = discord.utils.get(bot.emojis, id=int(emoji))
+        if found_emoji:
+            return found_emoji
+        else:
+            return emoji
 
     # Commands
 
@@ -28,7 +55,9 @@ class Vote(commands.Cog):
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            await ctx.message.add_reaction(emoji)
+            await ctx.message.add_reaction("`{emoji}`".format(emoji=emoji))
+            
+
            
 class VoteObject:
     pass
