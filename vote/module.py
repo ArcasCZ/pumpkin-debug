@@ -28,7 +28,7 @@ class Vote(commands.Cog):
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            ctx.reply(emoji)
+            await ctx.reply(emoji)
            
 class VoteObject:
     pass
