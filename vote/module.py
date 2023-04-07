@@ -27,7 +27,7 @@ class Vote(commands.Cog):
             True if it's known emoji
         """
         
-        if emoji.count(emoji_str) == 1:
+        if emoji.is_emoji(emoji_str):
             return True
         
         if re.match(EMOJI_REGEX, emoji_str):
@@ -35,6 +35,8 @@ class Vote(commands.Cog):
             if not found_emoji:
                 return False
             return True
+            
+        return False
         
         
 
