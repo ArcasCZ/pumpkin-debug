@@ -29,25 +29,7 @@ class Vote(commands.Cog):
             UTF-8 emoji or Discord Emoji
         """
         
-        if re.match(EMOJI_REGEX, emoji):
-            found_emoji = discord.utils.get(bot.emojis, name=emoji.replace(":", ""))
-            if not found_emoji:
-                return None
-            return str(found_emoji.id)
-        else:
-            return emoji
         
-        if emoji is None:
-            return None
-
-        if not emoji.isdigit():
-            return emoji
-
-        found_emoji = discord.utils.get(bot.emojis, id=int(emoji))
-        if found_emoji:
-            return found_emoji
-        else:
-            return emoji
 
     # Commands
 
@@ -65,16 +47,10 @@ class Vote(commands.Cog):
                 ).format(endtime_str=endtime_str)
             )
             return
-            
-        res = ""
-        for emoji in self.bot.emojis:
-            res += emoji.name + " "
-        await ctx.reply(res)
-        return
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            #await ctx.reply("`{emoji}`".format(emoji=emoji.__class__))
+            await ctx.reply("`{emoji}`".format(emoji=emoji))
             
             
 
