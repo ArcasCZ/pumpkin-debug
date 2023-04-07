@@ -1,9 +1,13 @@
+import re
+
 from typing import Optional, Union
 
 import discord
 from discord.ext import commands
 
 from pie import utils, check
+
+EMOJI_REGEX = "^:[a-zA-Z0-9]+:$"
 
 class Vote(commands.Cog):
     def __init__(self, bot):
@@ -25,12 +29,7 @@ class Vote(commands.Cog):
             UTF-8 emoji or Discord Emoji
         """
         
-        if isinstance(emoji, discord.PartialEmoji):
-            found_emoji = discord.utils.get(bot.emojis, id=emoji.id)
-            if not found_emoji:
-                return None
-            return str(found_emoji.id)
-        elif re.match(EMOJI_REGEX, emoji):
+        if re.match(EMOJI_REGEX, emoji):
             found_emoji = discord.utils.get(bot.emojis, name=emoji.replace(":", ""))
             if not found_emoji:
                 return None
@@ -69,7 +68,8 @@ class Vote(commands.Cog):
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            await ctx.reply("`{emoji}`".format(emoji=emoji.__class__))
+            #await ctx.reply("`{emoji}`".format(emoji=emoji.__class__))
+            await ctx.reply(discord.utils.get(bot.emojis, name=emoji))
             
 
            
