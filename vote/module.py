@@ -17,6 +17,7 @@ class Vote(commands.Cog):
     # Helper functions
     
     def check_emoji(
+        self,
         emoji_str: str,
     ) -> bool:
         """Verifies if the str is valid emoji or not.
