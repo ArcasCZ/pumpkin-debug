@@ -14,19 +14,20 @@ class Vote(commands.Cog):
     @commands.guild_only()
     @check.acl2(check.ACLevel.SUBMOD)
     @commands.command(name="vote")
-    async def vote(self, ctx, datetime_str: str, *, config: str):
+    async def vote(self, ctx, endtime_str: str, *, config: str):
         try:
-            end_time = utils.time.parse_datetime(datetime_str)
+            end_time = utils.time.parse_datetime(endtime_str)
         except dateutil.parser.ParserError:
             await ctx.reply(
                 _(
                     ctx,
-                    "I don't know how to parse `{datetime_str}`, please try again.",
-                ).format(datetime_str=datetime_str)
+                    "I don't know how to parse `{endtime_str}`, please try again.",
+                ).format(endtime_str=endtime_str)
             )
             return
         
-        await ctx.reply(end_time)
+        for line in config.splitlines():
+            await ctx.reply(line)
            
 class VoteObject:
     pass
