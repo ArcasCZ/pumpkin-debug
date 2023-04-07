@@ -65,11 +65,17 @@ class Vote(commands.Cog):
                 ).format(endtime_str=endtime_str)
             )
             return
+            
+        res = ""
+        for emoji in self.bot.emojis:
+            res += emoji.name + " "
+        await ctx.reply(res)
+        return
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
             #await ctx.reply("`{emoji}`".format(emoji=emoji.__class__))
-            await ctx.reply(self.bot.emojis)
+            
             
 
            
