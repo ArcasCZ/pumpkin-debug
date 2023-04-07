@@ -8,7 +8,7 @@ from discord.ext import commands
 
 from pie import utils, check
 
-EMOJI_REGEX = "^<[a-zA-Z0-9]*:[a-zA-Z0-9]+:[0-9]+>$"
+EMOJI_REGEX = "^<[a-zA-Z0-9]*:[a-zA-Z0-9]+:[0-9]*>$"
 
 class Vote(commands.Cog):
     def __init__(self, bot):
@@ -35,7 +35,6 @@ class Vote(commands.Cog):
             if not found_emoji:
                 return False
             return True
-            
         return False
         
         
@@ -56,13 +55,18 @@ class Vote(commands.Cog):
                 ).format(endtime_str=endtime_str)
             )
             return
+            
+        emojis = []
+        options = {}
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            await ctx.reply(self.check_emoji(emoji))
-            
-            
-
+            if self.check_emoji(emoji):
+                emojis.append(emoji)
+                options[emoji] = description
+            else:
+                await ctx.reply(_(ctx, "{emoji} was not recognized as emoji!").format(emoji=emoji))
+                return
            
 class VoteObject:
     pass
