@@ -1,3 +1,4 @@
+import emojis
 import re
 
 from typing import Optional, Union
@@ -7,7 +8,7 @@ from discord.ext import commands
 
 from pie import utils, check
 
-EMOJI_REGEX = "^:[a-zA-Z0-9]+:$"
+EMOJI_REGEX = "^<[a-zA-Z0-9]*:[a-zA-Z0-9]+:[0-9]+>$"
 
 class Vote(commands.Cog):
     def __init__(self, bot):
@@ -16,18 +17,26 @@ class Vote(commands.Cog):
     # Helper functions
     
     @staticmethod
-    def emoji_decode(
+    def check_emoji(
         bot: discord.Client,
         emoji: str,
-    ) -> Optional[Union[str, discord.Emoji, discord.PartialEmoji]]:
-        """If emoji is ID, it tries to look it up in bot's emoji DB.
-        Otherwise it returns the emoji untouched as string.
+    ) -> bool:
+        """Verifies if the str is valid emoji or not.
         Args:
             bot: :class:`discord.Client` used to search for Emoji
-            emoji: UTF-8 emoji or emoji's ID
+            emoji: string to check
         Returns:
-            UTF-8 emoji or Discord Emoji
+            True if it's known emoji
         """
+        
+        if emojis.count(emoji) == 1:
+            return True
+        
+        if re.match(EMOJI_REGEX, emoji):
+            found_emoji = discord.utils.get(bot.emojis, name=emoji.split(":")[1])
+            if not found_emoji:
+                return False
+            return True
         
         
 
@@ -50,7 +59,7 @@ class Vote(commands.Cog):
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            await ctx.reply("`{emoji}`".format(emoji=emoji))
+            await ctx.reply(Vote.check_emoji(emoji))
             
             
 
