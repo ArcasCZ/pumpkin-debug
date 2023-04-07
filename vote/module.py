@@ -31,7 +31,7 @@ class Vote(commands.Cog):
             return True
         
         if re.match(EMOJI_REGEX, emoji_str):
-            found_emoji = discord.utils.get(self.bot.emoji, name=emoji_str.split(":")[1])
+            found_emoji = discord.utils.get(self.bot.emojis, name=emoji_str.split(":")[1])
             if not found_emoji:
                 return False
             return True
