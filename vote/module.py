@@ -69,7 +69,7 @@ class Vote(commands.Cog):
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
             #await ctx.reply("`{emoji}`".format(emoji=emoji.__class__))
-            await ctx.reply(discord.utils.get(self.bot.emojis, name=emoji))
+            await ctx.reply(self.bot.emojis)
             
 
            
