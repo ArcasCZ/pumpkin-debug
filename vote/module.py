@@ -16,14 +16,11 @@ class Vote(commands.Cog):
         
     # Helper functions
     
-    @staticmethod
     def check_emoji(
-        bot: discord.Client,
         emoji_str: str,
     ) -> bool:
         """Verifies if the str is valid emoji or not.
         Args:
-            bot: :class:`discord.Client` used to search for Emoji
             emoji_str: string to check
         Returns:
             True if it's known emoji
@@ -33,7 +30,7 @@ class Vote(commands.Cog):
             return True
         
         if re.match(EMOJI_REGEX, emoji_str):
-            found_emoji = discord.utils.get(bot.emoji, name=emoji_str.split(":")[1])
+            found_emoji = discord.utils.get(self.bot.emoji, name=emoji_str.split(":")[1])
             if not found_emoji:
                 return False
             return True
@@ -59,7 +56,7 @@ class Vote(commands.Cog):
         
         for line in config.splitlines():
             (emoji, description) = line.split(maxsplit=1)
-            await ctx.reply(Vote.check_emoji(emoji))
+            await ctx.reply(self.check_emoji(emoji))
             
             
 
