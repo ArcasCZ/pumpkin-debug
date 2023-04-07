@@ -1,4 +1,4 @@
-import emojis
+import emoji
 import re
 
 from typing import Optional, Union
@@ -19,21 +19,21 @@ class Vote(commands.Cog):
     @staticmethod
     def check_emoji(
         bot: discord.Client,
-        emoji: str,
+        emoji_str: str,
     ) -> bool:
         """Verifies if the str is valid emoji or not.
         Args:
             bot: :class:`discord.Client` used to search for Emoji
-            emoji: string to check
+            emoji_str: string to check
         Returns:
             True if it's known emoji
         """
         
-        if emojis.count(emoji) == 1:
+        if emoji.count(emoji_str) == 1:
             return True
         
-        if re.match(EMOJI_REGEX, emoji):
-            found_emoji = discord.utils.get(bot.emojis, name=emoji.split(":")[1])
+        if re.match(EMOJI_REGEX, emoji_str):
+            found_emoji = discord.utils.get(bot.emoji, name=emoji_str.split(":")[1])
             if not found_emoji:
                 return False
             return True
